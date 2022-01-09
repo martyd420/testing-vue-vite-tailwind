@@ -17,13 +17,14 @@
         
         data() {
             return {
-                timeout: 10,
+                timeout: 20,
                 add_timeout_first_question: 10,
                 add_timeout_on_question_solved: 8,
-                count: 0,
+                count: 0, // moves
                 count_solved: 0,
                 fails: 0,
                 max_fails: 3,
+                score: 0,
                 questions: questions_data,
                 current_question_id: 1, // question 1 = hint
                 current_question: 'Vítejte v pseudohře  > SeřaďTo <',
@@ -62,7 +63,7 @@
             },
 
             gameOver: function() {
-                 alert('GAME OVER');
+                 alert('GAME OVER  -  Score: ' + this.score);
                  window.location.reload(); // :) 
             },
             
@@ -71,7 +72,7 @@
 
         watch: {
             count_solved() {
-                /** add global score and load new question here */
+                this.score += (this.count_solved * this.timeout) * (1 + (this.fails/3))
                 this.timeout += this.add_timeout_on_question_solved
                 this.nextQuestion()
             }
@@ -85,14 +86,18 @@
 
 <template>
 
-    <Question @next-move="++count" @solved="++count_solved" :id="current_question_id" :question="current_question" :answers="current_answers"/>
+    <div class="w-128 m-auto mt-10 p-1 rounded-lg border-2 border-orange-400 bg-gray-300 bg-gradient-to-b from-gray-400 to-gray-50">
 
-    <footer>
-        <button @click="nextQuestion">debug next</button><br>
-        <span class="pr-6">Počet tahů: {{ count }}</span>
-        <span class="pr-6">Zbývající čas: {{ timeout }}</span>
-        <span class="pr-6">Chyby: {{ fails }}/3</span>
-        <span class="pr-6">Vyřešeno: {{ count_solved }}</span>
-    </footer>
+        <Question @next-move="++count" @solved="++count_solved" :id="current_question_id" :question="current_question" :answers="current_answers"/>
+
+        <section id="score" class="text-right font-bold pb-4">
+            <!-- button @click="nextQuestion">debug next</button><br -->
+            <span title="Zbývající čas na otázku" class="float-left mt-1 ml-6 text-lg text-gray-500">⏳ {{ timeout }}</span>
+            <span title="Počet tahů" class="pr-6 text-xl text-gray-600">Tahy: {{ count }}</span>
+            <span title="Počet nestihnutých / chyb" class="pr-5 text-2xl text-red-500">✖️ {{ fails }}/3</span>
+            <span title="Počet vyřešených" class="pr-5 text-2xl text-green-500">✔️ {{ count_solved }}</span>
+            <span title="Score" class="pr-5 text-2xl text-red-600">⭐ {{ score }}</span>
+        </section>
+    </div>
 
 </template>
