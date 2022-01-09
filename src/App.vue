@@ -12,11 +12,11 @@
             Item,
             draggable,
         },
+        
         created: function () {
             setInterval(() => {
                 if(this.timeout == 0) {
                     this.timeout = 2
-                    
                     if (++this.fails == 3) this.gameOver()
                     this.nextQuestion()
                 } else {
@@ -27,20 +27,29 @@
         ,
         methods: {
             nextQuestion: function() {
-                console.log('NEXT')
                 this.timeout += 8
+
+                var rndi = Math.floor(Math.random() * this.questions.length);
+                var nq = this.questions.at(rndi);
+
+                this.current_question_id    = nq.current_question_id
+                this.current_question       = nq.current_question
+                this.current_answers        = nq.current_answers
             },
+
             gameOver: function() {
                  this.count = 0;
                  this.count_solved = 0
                  alert('GAME OVER');
                  this.fails = 0;
                  this.nextQuestion()
-            }
+            },
+            
+
         },
         watch: {
             count_solved() {
-                /** add score and load new question here */
+                /** add global score and load new question here */
                 console.log('this.watch.count_solved')
                 this.nextQuestion()
             }
@@ -57,11 +66,12 @@
                     /** ty description by tam vůbec nemusely být...  ale už tam jsou :D  */
                         { id: "1", title: "První", description: "Přesuňte na první místo" },
                         { id: "2", title: "Ne třetí", description: "Tahle položka bude druhá" },
+                        
                         { id: "3", title: "Předposlední", description: "Přesuňte na 3. místo" },
                         { id: "4", title: "4.", description: "Čtyřka by možná mohla být poslední" }
                 ],
+
                 questions: [
-                    [
                         {
                             current_question_id: 32,
                             current_question: "Seřeďte logicky jednotlivé příkazy",
@@ -92,7 +102,6 @@
                                 { id: "4", title: "Imago", description: "Hádej, můžeš jednou" }
                             ],
                         },
-                    ],
                     
                 ]
             }
@@ -108,6 +117,7 @@
     <Question @next-move="++count" @solved="++count_solved" :id="current_question_id" :question="current_question" :answers="current_answers"/>
 
     <footer>
+        <button @click="nextQuestion">next</button><br>
         <span class="pr-6">Počet tahů: {{ count }}</span>
         <span class="pr-6">Zbývající čas: {{ timeout }}</span>
         <span class="pr-6">Chyby: {{ fails }}/3</span>

@@ -45,6 +45,11 @@
             }
         }, 
         
+        watch: {
+            answers() {
+                this.rlist = this.randomizeArray(this.answers);
+            }
+        },
 
         methods: {
 
@@ -81,8 +86,9 @@
                     [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
                 }
                 return array;
-            }
+            },
 
+            
         }
 
     }
