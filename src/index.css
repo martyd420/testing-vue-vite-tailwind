@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer utilities {
+
+    .text-shadow-1 {
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.32)
+    }
+
+    .text-shadow, .text-shadow-2 {
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.45)
+    }
+
+    .text-shadow-3 {
+        text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.55)
+    }
+
+}
+
+
+@layer components {
+    article {
+        @apply border-orange-500 border-2 hover:border-gray-900 p-2 m-5 rounded-md text-gray-900 shadow-sm hover:shadow-xl bg-gray-100 hover:bg-orange-100 cursor-pointer
+    }
+
+    article > h3 {
+        @apply text-orange-600 text-2xl text-center font-bold
+    }
+
+    article > p {
+        @apply text-center text-lg
+    }
+}
