@@ -23,6 +23,8 @@
                     --this.timeout;
                 };
             }, 1000);
+            
+            this.timeout += 10
         }
         ,
         methods: {
@@ -61,14 +63,13 @@
                 count_solved: 0,
                 fails: 0,
                 current_question_id: 1,
-                current_question: 'SEŘAĎ TO! [pseudogame]',
+                current_question: 'Vítejte v pseudohře  > SeřaďTo <',
                 current_answers: [
                     /** ty description by tam vůbec nemusely být...  ale už tam jsou :D  */
-                        { id: "1", title: "První", description: "Přesuňte na první místo" },
-                        { id: "2", title: "Ne třetí", description: "Tahle položka bude druhá" },
-                        
-                        { id: "3", title: "Předposlední", description: "Přesuňte na 3. místo" },
-                        { id: "4", title: "4.", description: "Čtyřka by možná mohla být poslední" }
+                        { id: "1", title: "První", description: "Přesuňte na 1. místo" },
+                        { id: "2", title: "Druhá", description: "Přesuňte na 2. místo" },
+                        { id: "3", title: "Třetí", description: "Přesuňte na 3. místo" },
+                        { id: "4", title: "Čtrvrtá", description: "Přesuňte na 4. místo" }
                 ],
 
                 questions: [
