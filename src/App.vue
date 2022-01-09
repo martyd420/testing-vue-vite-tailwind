@@ -42,6 +42,7 @@
             setInterval(() => {
                 if(this.timeout == 0) {
                     if (++this.fails == this.max_fails) this.gameOver()
+                    this.timeout += Math.floor(this.add_timeout_on_question_solved / 2)
                     this.nextQuestion()
                 } else {
                     --this.timeout;
