@@ -15,54 +15,15 @@
             draggable,
         },
         
-        created: function () {
-            setInterval(() => {
-                if(this.timeout == 0) {
-                    this.timeout = 2
-                    if (++this.fails == 3) this.gameOver()
-                    this.nextQuestion()
-                } else {
-                    --this.timeout;
-                };
-            }, 1000);
-
-            this.timeout += 10
-        }
-        ,
-        methods: {
-            nextQuestion: function() {
-                this.timeout += 8
-
-                var rndi = Math.floor(Math.random() * this.questions.length);
-                var nq = this.questions.at(rndi);
-
-                this.current_question_id    = nq.current_question_id
-                this.current_question       = nq.current_question
-                this.current_answers        = nq.current_answers
-            },
-
-            gameOver: function() {
-                 this.count = 0;
-                 this.count_solved = 0
-                 alert('GAME OVER');
-                 window.location.reload();
-            },
-            
-
-        },
-        watch: {
-            count_solved() {
-                /** add global score and load new question here */
-                console.log('this.watch.count_solved')
-                this.nextQuestion()
-            }
-        },   
         data() {
             return {
                 timeout: 10,
+                add_timeout_first_question: 10,
+                add_timeout_on_question_solved: 8,
                 count: 0,
                 count_solved: 0,
                 fails: 0,
+                max_fails: 3,
                 questions: questions_data,
                 current_question_id: 1, // question 1 = hint
                 current_question: 'Vítejte v pseudohře  > SeřaďTo <',
@@ -74,7 +35,48 @@
                         { id: "4", title: "Čtrvrtá", description: "Přesuňte na 4. místo" },
                 ],
             }
-        }
+        },
+
+        created: function () {
+            setInterval(() => {
+                if(this.timeout == 0) {
+                    if (++this.fails == this.max_fails) this.gameOver()
+                    this.nextQuestion()
+                } else {
+                    --this.timeout;
+                };
+            }, 1000);
+
+            this.timeout += this.add_timeout_first_question
+        },
+
+        
+        methods: {
+            nextQuestion: function() {
+                var rndi = Math.floor(Math.random() * this.questions.length);
+                var nq = this.questions.at(rndi);
+
+                this.current_question_id    = nq.current_question_id
+                this.current_question       = nq.current_question
+                this.current_answers        = nq.current_answers
+            },
+
+            gameOver: function() {
+                 alert('GAME OVER');
+                 window.location.reload(); // :) 
+            },
+            
+
+        },
+
+        watch: {
+            count_solved() {
+                /** add global score and load new question here */
+                this.timeout += this.add_timeout_on_question_solved
+                this.nextQuestion()
+            }
+        },   
+        
     }
 
 
@@ -86,7 +88,7 @@
     <Question @next-move="++count" @solved="++count_solved" :id="current_question_id" :question="current_question" :answers="current_answers"/>
 
     <footer>
-        <button @click="nextQuestion">next</button><br>
+        <button @click="nextQuestion">debug next</button><br>
         <span class="pr-6">Počet tahů: {{ count }}</span>
         <span class="pr-6">Zbývající čas: {{ timeout }}</span>
         <span class="pr-6">Chyby: {{ fails }}/3</span>
@@ -94,4 +96,3 @@
     </footer>
 
 </template>
-

@@ -1,4 +1,5 @@
 <template>
+
     <h1 class="text-shadow font-bold shadow-2xl text-center text-xl m-4 mb-6 p-3 border-2 border-opacity-95 rounded-md bg-orange-500 text-white ">
         {{ question }}
     </h1>
@@ -10,12 +11,11 @@
             <template #item="{ element }">
                 <Item :title="element.title" :description="element.description" /> 
             </template>  
-
+            
         </draggable>
 
     </section>
 
-    <button @click="dbgDumpList">dump</button>
 </template>
 
 
@@ -54,27 +54,14 @@
         methods: {
 
             onDrop: function(e) {
-                //this.dbgDumpList();
                 this.$emit('next-move')
                 let poradi = '';
                 this.rlist.forEach(element => {
                     poradi += element.id
                 });
                 if ('0123456789'.includes(poradi)) {
-                    console.log('Question ' + this.id + ' solved.');
                     this.$emit('solved')
                 }
-            },
-
-            onMove: function(e) {
-                /* no action */
-            },
-
-            dbgDumpList: function () {
-                console.log('Aktualni stav pole:');
-                this.rlist.forEach(element => {
-                    console.log (element.id);
-                });
             },
 
             // https://bost.ocks.org/mike/shuffle/
@@ -87,13 +74,10 @@
                 }
                 return array;
             },
-
-            
+      
         }
 
     }
    
-
-    
 
 </script>
