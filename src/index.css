@@ -25,15 +25,29 @@
 
 
 @layer components {
+
     article {
-        @apply border-orange-500 border-2 hover:border-gray-900 p-2 m-5 rounded-md text-gray-900 shadow-sm hover:shadow-xl bg-gray-100 hover:bg-orange-100 cursor-pointer
+        @apply 
+        border-2 
+        border-orange-500
+        hover:border-gray-900 
+        rounded-md 
+        bg-gray-100 
+        hover:bg-orange-100 
+        p-2 
+        m-5 
+        text-gray-900 
+        shadow-sm 
+        hover:shadow-xl 
+        cursor-pointer
     }
 
     article > h3 {
-        @apply text-orange-600 text-2xl text-center font-bold
+        @apply text-orange-600 text-xl text-center font-bold
     }
 
     article > p {
-        @apply text-center text-lg
+        @apply text-center text-sm
     }
+    
 }

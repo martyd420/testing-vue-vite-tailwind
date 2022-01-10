@@ -87,18 +87,34 @@
 
 <template>
 
-    <div class="w-128 m-auto mt-10 p-1 rounded-lg border-2 border-orange-400 bg-gray-300 bg-gradient-to-b from-gray-400 to-gray-50">
+    <div class="m-1 p-1 rounded-lg border-2 border-orange-400 bg-gray-300 bg-gradient-to-b from-gray-400 to-gray-100">
 
         <Question @next-move="++count" @solved="++count_solved" :id="current_question_id" :question="current_question" :answers="current_answers"/>
 
-        <section id="score" class="text-right font-bold pb-4">
-            <!-- button @click="nextQuestion">debug next</button><br -->
-            <span title="Zbývající čas na otázku" class="float-left mt-1 ml-6 text-lg text-gray-500">⏳ {{ timeout }}</span>
-            <span title="Počet tahů" class="pr-6 text-xl text-gray-600">Tahy: {{ count }}</span>
-            <span title="Počet nestihnutých / chyb" class="pr-5 text-2xl text-red-500">✖️ {{ fails }}/3</span>
-            <span title="Počet vyřešených" class="pr-5 text-2xl text-green-500">✔️ {{ count_solved }}</span>
-            <span title="Score" class="pr-5 text-2xl text-red-600">⭐ {{ score }}</span>
+        <section id="score" class="text-right font-bold pb-2">
+            
+            <span title="Zbývající čas na otázku" class="float-left mt-1 ml-6 text-md text-gray-500">
+                ⏳ {{ timeout }}
+            </span>
+
+            <span title="Počet tahů" class="pr-2 text-md text-gray-600">
+                👆 {{ count }}
+            </span>
+
+            <span title="Počet nestihnutých / chyb" class="pr-2 text-md text-red-500">
+                ✖️ {{ fails }}<span class="text-xs font-normal">/3</span>
+            </span>
+
+            <span title="Počet vyřešených" class="pr-2 text-md text-green-500">
+                ✔️ {{ count_solved }}
+                </span>
+
+            <span title="Score" class="pr-3 text-xl text-green-700">
+                ⭐ {{ score }}
+            </span>
+
         </section>
+        
     </div>
 
 </template>

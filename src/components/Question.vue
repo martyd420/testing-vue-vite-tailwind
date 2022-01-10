@@ -1,6 +1,6 @@
 <template>
 
-    <h1 class="text-shadow font-bold shadow-2xl text-center text-xl m-4 mb-6 p-3 border-2 border-opacity-95 rounded-md bg-orange-500 text-white ">
+    <h1 class="text-shadow font-bold shadow-2xl text-center text-sm m-4 mb-6 p-3 border-2 border-opacity-95 rounded-md bg-orange-500 text-white ">
         {{ question }}
     </h1>
 
