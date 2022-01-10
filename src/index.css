@@ -34,8 +34,10 @@
         rounded-md 
         bg-gray-100 
         hover:bg-orange-100 
-        p-2 
-        m-5 
+        p-1 
+        m-2
+        mr-5
+        ml-5 
         text-gray-900 
         shadow-sm 
         hover:shadow-xl 
@@ -43,7 +45,7 @@
     }
 
     article > h3 {
-        @apply text-orange-600 text-xl text-center font-bold
+        @apply text-orange-600 text-base text-center font-bold
     }
 
     article > p {
