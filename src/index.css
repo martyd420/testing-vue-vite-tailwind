@@ -21,6 +21,7 @@
     .w-128 {
         width: 32rem;
     }
+    
 }
 
 
@@ -28,28 +29,59 @@
 
     article {
         @apply 
-        border-2 
-        border-orange-500
-        hover:border-gray-900 
-        rounded-md 
         bg-gray-100 
         hover:bg-orange-100 
+
+        border-2 
+        rounded-md 
+        border-orange-500
+        hover:border-gray-900
+
         p-1 
         m-2
         mr-5
         ml-5 
+        sm:p-2
+        sm:m-3
+
         text-gray-900 
         shadow-sm 
         hover:shadow-xl 
+
         cursor-pointer
     }
-
     article > h3 {
-        @apply text-orange-600 text-base text-center font-bold
+        @apply 
+        text-orange-600 
+        text-center 
+        font-bold
+        text-base 
+        sm:text-lg 
+        md:text-xl
     }
-
     article > p {
-        @apply text-center text-sm
+        @apply 
+        text-center 
+        text-sm 
+        sm:text-base
+        md:text-xl
     }
     
+
+.question_container {
+    @apply 
+    sm:w-128 
+    sm:ml-auto 
+    sm:mr-auto 
+    sm:mt-5 
+    m-1 
+    p-1 
+    rounded-lg 
+    border-2 
+    border-orange-400 
+    bg-gray-300 bg-gradient-to-b 
+    from-gray-400 
+    to-gray-100
+}
+
 }

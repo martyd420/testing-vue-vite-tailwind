@@ -87,29 +87,31 @@
 
 <template>
 
-    <div class="m-1 p-1 rounded-lg border-2 border-orange-400 bg-gray-300 bg-gradient-to-b from-gray-400 to-gray-100">
+    <div class="question_container">
+
 
         <Question @next-move="++count" @solved="++count_solved" :id="current_question_id" :question="current_question" :answers="current_answers"/>
 
+
         <section id="score" class="text-right font-bold pb-2">
             
-            <span title="Zbývající čas na otázku" class="float-left mt-1 ml-6 text-md text-gray-500">
+            <span class="float-left mt-1 ml-5 sm:ml-3 text-md sm:text-xl text-gray-500" title="Zbývající čas na otázku" >
                 ⏳ {{ timeout }}
             </span>
 
-            <span title="Počet tahů" class="pr-2 text-md text-gray-600">
+            <span class="pr-3 sm:pr-6 text-md sm:text-xl text-gray-600" title="Počet tahů" >
                 👆 {{ count }}
             </span>
 
-            <span title="Počet nestihnutých / chyb" class="pr-2 text-md text-red-500">
+            <span class="pr-3 sm:pr-6 text-md sm:text-xl text-red-500" title="Počet nestihnutých / chyb">
                 ✖️ {{ fails }}<span class="text-xs font-normal">/3</span>
             </span>
 
-            <span title="Počet vyřešených" class="pr-2 text-md text-green-500">
+            <span class="pr-3 sm:pr-6 text-md sm:text-xl text-green-500" title="Počet vyřešených">
                 ✔️ {{ count_solved }}
                 </span>
 
-            <span title="Score" class="pr-3 text-xl text-green-700">
+            <span class="pr-5 sm:pr-3 text-xl sm:text-2xl text-green-700" title="Score">
                 ⭐ {{ score }}
             </span>
 
