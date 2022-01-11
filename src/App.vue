@@ -104,7 +104,7 @@
             </span>
 
             <span class="pr-3 sm:pr-6 text-md sm:text-xl text-red-500" title="Počet nestihnutých / chyb">
-                ✖️ {{ fails }}<span class="text-xs font-normal">/3</span>
+                ✖️ {{ fails }}<span class="text-xs font-normal">/{{ max_fails }}</span>
             </span>
 
             <span class="pr-3 sm:pr-6 text-md sm:text-xl text-green-500" title="Počet vyřešených">
