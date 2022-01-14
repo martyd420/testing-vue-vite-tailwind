@@ -21,6 +21,18 @@
     .w-128 {
         width: 32rem;
     }
+
+
+    .hover-zoom {
+        overflow: hidden;
+        transition-duration: 0.3s;
+        transition-property: transform;
+    }
+
+    .hover-zoom:hover {
+        transform: scale(1.03);
+        -webkit-transform: scale(1.03);
+    }
     
 }
 
@@ -36,6 +48,8 @@
         rounded-md 
         border-orange-500
         hover:border-gray-900
+
+        sm:hover:hover-zoom
 
         p-1 
         m-2
