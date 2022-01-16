@@ -67,7 +67,20 @@
             gameOver: function() {
                  alert('GAME OVER  -  Score: ' + this.score);
                  clearTimeout(this.timer_handle);
-                 this.$router.push('/')
+                 let data = {
+                     score: 1000,
+                     fails: 1,
+                 }
+
+                this.$router.push({ 
+                    name: 'GameOver', 
+                    params: {
+                        score: this.score,
+                        moves: this.count
+                    } 
+                });
+                 
+                 //this.$router.push('/game-over', params: {})
             },
             
 

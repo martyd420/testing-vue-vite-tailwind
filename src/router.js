@@ -16,7 +16,9 @@ export default createRouter({
     },
     {
       path: '/game-over',
+      name: 'GameOver',
       component: GameOver,
+      props: true,
   },
   ]
 })
