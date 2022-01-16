@@ -25,6 +25,7 @@
                 fails: 0,
                 max_fails: 3,
                 score: 0,
+                timer_handle: null,
                 questions: questions_data,
                 current_question_id: 1, // question 1 = hint
                 current_question: 'Vítejte v pseudohře  > SeřaďTo <',
@@ -39,7 +40,7 @@
         },
 
         created: function () {
-            setInterval(() => {
+            this.timer_handle = setInterval(() => {
                 if(this.timeout == 0) {
                     if (++this.fails == this.max_fails) this.gameOver()
                     this.timeout += Math.floor(this.add_timeout_on_question_solved / 2)
@@ -65,7 +66,8 @@
 
             gameOver: function() {
                  alert('GAME OVER  -  Score: ' + this.score);
-                 window.location.reload(); // :) 
+                 clearTimeout(this.timer_handle);
+                 this.$router.push('/')
             },
             
 
@@ -89,6 +91,7 @@
 
     <div class="question_container">
 
+        <span @click="gameOver" style="position: absolute; margin-top: -6px; cursor: pointer;">🢀</span>
 
         <Question @next-move="++count" @solved="++count_solved" :id="current_question_id" :question="current_question" :answers="current_answers"/>
 

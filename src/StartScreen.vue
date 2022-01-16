@@ -47,7 +47,6 @@
         </div>
 
 
-
         <footer class="mt-2 text-xs text-gray-300 text-right"> 
             https://github.com/martyd420/testing-vue-vite-tailwind
         </footer>
