@@ -1,14 +1,18 @@
 <script>
 
-    import Questions from './components/Questions.vue';
-    import StartScreen from './components/Questions.vue';
+    import Item from './components/Item.vue';
+    import Question from './components/Question.vue';
+    
+    import draggable from "vuedraggable";
 
+    import questions_data from './questions.json'
     
 
     export default {
         components: {
-            Questions,
-            StartScreen
+            Question,
+            Item,
+            draggable,
         },
         
         data() {
