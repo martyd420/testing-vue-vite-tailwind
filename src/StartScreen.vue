@@ -48,7 +48,7 @@
 
 
 
-        <footer class="text-xs text-gray-300 text-right">
+        <footer class="mt-2 text-xs text-gray-300 text-right">
             This opensource demo-test is created by Martin Dřímal,<br /> 
             https://github.com/martyd420/testing-vue-vite-tailwind
         </footer>
