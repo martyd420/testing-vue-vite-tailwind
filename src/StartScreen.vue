@@ -11,14 +11,50 @@
             Za každou správnou odpověď hráč získává score vycházející z přesnosti a rychlosti.
         </p>
 
-    <br class="clear-both" />
+        <br class="clear-both" />
 
-    <div class="text-center text-xl underline sm:text-2xl md:text-3l mb-4 pt-2 sm:pt-3 md:pt-4">
-        <router-link class="font-bold color-1 text-shadow-1 border-orange-800" to="/questions">SPUSTIT HRU</router-link>
-    </div>
-    
+        <div class="text-center text-2xl underline sm:text-3xl sm:mt-6 md:text-4xl mb-1 pt-2 sm:pt-3 md:pt-4">
+            <router-link class="font-bold color-1 text-shadow-1" to="/questions">SPUSTIT HRU</router-link>
+        </div>
+        
+        <p class="mt-5 sm:mt-8 md:mt-9 font-semibold text-sm sm:text-lg md:text-xl text-center">
+            ⬇️ Ve spodní části se bude zobrazovat ⬇️
+        </p>
+
+
+        <div id="score" class="text-right font-bold pb-2 mt-4 border-blue-200 border-2 rounded-lg">
+                
+            <span class="float-left mt-1 ml-1 sm:ml-3 text-sm sm:text-lg text-gray-500" title="Zbývající čas na otázku" >
+                ⏳ Čas
+            </span>
+
+            <span class="pr-1 sm:pr-4 text-sm sm:text-lg text-gray-600" title="Počet tahů" >
+                👆 Tahy
+            </span>
+
+            <span class="pr-1 sm:pr-4 text-sm sm:text-lg text-red-500" title="Počet nestihnutých / chyb">
+                ✖️ Chyby
+            </span>
+
+            <span class="whitespace-nowrap pr-1 sm:pr-4 text-sm sm:text-lg text-green-500" title="Počet vyřešených">
+                ✔️ OK
+            </span>
+
+            <span class="whitespace-nowrap pr-1 sm:pr-3 text-md sm:text-2xl text-green-700 underline" title="Score">
+                ⭐ Score
+            </span>
+
+        </div>
+
+
+
+        <footer class="text-xs text-gray-300 text-right">
+            This opensource demo-test is created by Martin Dřímal,<br /> 
+            https://github.com/martyd420/testing-vue-vite-tailwind
+        </footer>
 
     </section>
+
 
 </template>
 
@@ -33,29 +69,11 @@
             HeaderTitle,
         },
 
-        
-        props: ['autostart'],
-
-        created: function () {
-            /** constructor */
-        },    
-        
         data() {
             return {
-                random: 4, // selected by true random dice roll
+                random: 4, // selected by random dice roll
             }
         }, 
         
-        methods: {
-
-            // https://bost.ocks.org/mike/shuffle/
-            startGame: function() {
-                alert ('start game?');
-            }
-
-        }
-
     }
-   
-
 </script>

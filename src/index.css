@@ -96,6 +96,8 @@
         p-1 
         rounded-lg 
         border-2 
+        shadow-xl
+        shadow-gray-500
         border-orange-400 
         bg-gray-300 bg-gradient-to-b 
         from-gray-400 
@@ -113,9 +115,11 @@
         m-1
         p-3 
         text-gray-800
-        rounded-lg 
         border-2 
+        rounded-lg 
         border-orange-400 
+        shadow-xl
+        shadow-gray-500
         bg-gray-300 bg-gradient-to-b 
         from-gray-400 
         to-gray-100
