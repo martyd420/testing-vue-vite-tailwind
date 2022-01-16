@@ -33,7 +33,11 @@
         transform: scale(1.03);
         -webkit-transform: scale(1.03);
     }
-    
+
+
+    .color-1 {
+        color: #8B0202;
+    }
 }
 
 
@@ -82,20 +86,39 @@
     }
     
 
-.question_container {
-    @apply 
-    sm:w-128 
-    sm:ml-auto 
-    sm:mr-auto 
-    sm:mt-5 
-    m-1 
-    p-1 
-    rounded-lg 
-    border-2 
-    border-orange-400 
-    bg-gray-300 bg-gradient-to-b 
-    from-gray-400 
-    to-gray-100
-}
+    .question_container {
+        @apply 
+        sm:w-128 
+        sm:ml-auto 
+        sm:mr-auto 
+        sm:mt-5 
+        m-1 
+        p-1 
+        rounded-lg 
+        border-2 
+        border-orange-400 
+        bg-gray-300 bg-gradient-to-b 
+        from-gray-400 
+        to-gray-100
+    }
+
+
+    #universal_container{
+        @apply
+        overflow-auto
+        sm:w-128 
+        sm:ml-auto 
+        sm:mr-auto 
+        sm:mt-5 
+        m-1
+        p-3 
+        text-gray-800
+        rounded-lg 
+        border-2 
+        border-orange-400 
+        bg-gray-300 bg-gradient-to-b 
+        from-gray-400 
+        to-gray-100
+    }
 
 }

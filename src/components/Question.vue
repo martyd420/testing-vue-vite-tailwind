@@ -1,28 +1,8 @@
 <template>
 
-    <h1 class="
-        text-gray-100
-        text-shadow 
-        font-bold 
-        shadow-2xl 
-        text-center 
-        text-sm 
-        sm:text-base 
-
-        m-4 
-        mb-6 
-        p-3 
-
-        border-2 
-        border-opacity-95 
-        rounded-md 
-        bg-orange-500 
-        
-    ">
-        {{ question }}
-    </h1>
-
     <section id="qlist">
+        
+        <HeaderTitle :title="this.question" />
 
         <draggable :onEnd="onDrop" v-model="rlist" group="qlist" item-key="id">
 
@@ -38,12 +18,15 @@
 
 
 <script>
+    import HeaderTitle from './HeaderTitle.vue';
     import draggable from "vuedraggable";
     import Item from './Item.vue';
+
 
     export default {
 
         components: {
+            HeaderTitle,
             Item,
             draggable, 
         },
