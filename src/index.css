@@ -36,8 +36,20 @@
 
 
     .color-1 {
-        color: #8B0202;
+        color: #8B0000;
     }
+
+    .outline_score
+    {
+        color: #FFC83D;
+        text-shadow:
+        -2px -2px 1px #8B0000,
+        2px -2px 1px #8B0000,
+        -2px 2px 1px #8B0000,
+        2px 2px 1px #8B0000;
+        letter-spacing: 0.33rem;
+    }
+
 }
 
 
