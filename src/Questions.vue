@@ -17,6 +17,7 @@
         
         data() {
             return {
+                total_time: 0,
                 timeout: 20,
                 add_timeout_first_question: 10,
                 add_timeout_on_question_solved: 8,
@@ -47,6 +48,7 @@
                     this.nextQuestion()
                 } else {
                     --this.timeout;
+                    ++this.total_time;
                 };
             }, 1000);
 
@@ -70,18 +72,25 @@
                 let data = {
                     score: 1000,
                     fails: 1,
-                 }
+                }
+
+                let time_min = Math.floor(this.total_time / 60);
+                if (time_min.toString().length < 2) time_min = '0' + time_min
+
+                let time_sec = Math.floor(this.total_time - (time_min * 60));
+                if (time_sec.toString().length < 2) time_sec = '0' + time_sec
 
                 this.$router.push({ 
                     name: 'GameOver', 
                     params: {
                         score: this.score,
                         moves: this.count,
-                        solved: this.count_solved
+                        solved: this.count_solved,
+                        time: time_min + ':' + time_sec,
                     } 
                 });
                  
-            },
+            }, // end game over
             
 
         },

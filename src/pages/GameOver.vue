@@ -18,7 +18,7 @@
         <div id="score" class="text-right font-bold pb-2 mt-4 ">
                 
             <span class="float-left mt-1 ml-1 sm:ml-3 text-sm sm:text-lg text-gray-500" title="Zbývající čas na otázku" >
-                ⏳ 0
+                ⏳ {{ this.time }}
             </span>
 
             <span class="pr-1 sm:pr-4 text-sm sm:text-lg text-gray-600" title="Počet tahů" >
@@ -56,7 +56,7 @@
             HeaderTitle,
         },
 
-        props: ['score', 'moves', 'solved'],
+        props: ['score', 'moves', 'solved', 'time'],
 
         data() {
             return {
