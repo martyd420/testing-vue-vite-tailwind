@@ -21,10 +21,10 @@
 
         <table class="ml-auto mr-auto mt-5 text-sm font-semibold text-gray-700">
 
-            <tr v-for="item in score_table" :key="item.id">
-                
+            <tr v-for="(item, index) in score_table" :key="item.id">
+
                 <td class="pr-3">
-                    
+                    {{ index+1 }}.
                 </td>
 
                 <td class="pr-3">
@@ -91,13 +91,9 @@
                 random: 4, // selected by random dice roll. Přísahám!!!
                 highscore: 0,
                 iterator_counter: 0,
-                score_table: [
-                    {id: 5, nick: 'martyd420', score: 4096},
-                    {id: 4, nick: 'SG1', score: 2048},
-                    {id: 9, nick: 'plejr1', score: 667},
-                    {id: 2, nick: 'Vykolej Rozkašil', score: 512},
-                    {id: 1, nick: 'martyd420', score: 420},
-                ],
+                // https://serazovacka.pcdr.cz/score-table/get-scores
+                score_table: [],
+                
             }
         },
         
@@ -109,7 +105,28 @@
                 localStorage.highscore = this.score
                 this.highscore = this.score
             }
+
         },    
         
+        beforeMount: function() {
+            this.downloadScoreList();
+        },
+
+        methods: {
+
+            downloadScoreList: function() {
+                fetch("https://serazovacka.pcdr.cz/score-table/get-scores")
+                    .then(r => r.json())
+                    .then(json => {
+                        this.score_table = json;
+                        }
+                    );
+            },
+
+            sendScore: function(nick, score) {
+                return true
+            }
+        } // end methods
+
     }
 </script>
