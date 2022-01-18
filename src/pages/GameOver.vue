@@ -14,7 +14,7 @@
             Highscore: {{ this.highscore }}
         </p>
 
-        <p id="new_highscore" v-if="!(highscore < score)" class="animate-pulse pt-6 sm:pt-9 text-center text-2xl font-bold text-red-600">
+        <p id="new_highscore" v-if="score >= highscore && score != 0" class="animate-pulse pt-6 sm:pt-9 text-center text-2xl font-bold text-red-600">
             ⭐ NOVÝ REKORD ⭐
         </p> 
 
@@ -74,9 +74,9 @@
         
         mounted() {
             if (localStorage.highscore) {
-                this.highscore = localStorage.highscore;
+                this.highscore = parseInt(localStorage.highscore);
             }
-            if (parseInt(this.highscore) < parseInt(this.score)) {
+            if (this.highscore < this.score && this.score > 0) {
                 localStorage.highscore = this.score
                 this.highscore = this.score
             }
