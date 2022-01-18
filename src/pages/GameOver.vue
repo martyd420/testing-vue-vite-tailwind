@@ -11,12 +11,33 @@
         </p>
 
         <p id="highscore" class="pt-1 sm:pt-2 text-center text-sm font-bold text-gray-800">
-            Highscore: {{ this.highscore }}
+            Lokální highscore: {{ this.highscore }}
         </p>
 
         <p id="new_highscore" v-if="score >= highscore && score != 0" class="animate-pulse pt-6 sm:pt-9 text-center text-2xl font-bold text-red-600">
             ⭐ NOVÝ REKORD ⭐
         </p> 
+
+
+        <table class="ml-auto mr-auto mt-5 text-sm font-semibold text-gray-700">
+
+            <tr v-for="item in score_table" :key="item.id">
+                
+                <td class="pr-3">
+                    
+                </td>
+
+                <td class="pr-3">
+                    {{ item.nick }}
+                </td>
+
+                <td class="font-bold">
+                    {{ item.score }}
+                </td>
+
+            </tr>
+
+        </table>
 
         <p class="text-center mt-10 mb-8">
             <router-link class="font-bold color-1 text-shadow-1 text-xl underline" to="/">RESTART GAME</router-link>
@@ -69,6 +90,14 @@
             return {
                 random: 4, // selected by random dice roll. Přísahám!!!
                 highscore: 0,
+                iterator_counter: 0,
+                score_table: [
+                    {id: 5, nick: 'martyd420', score: 4096},
+                    {id: 4, nick: 'SG1', score: 2048},
+                    {id: 9, nick: 'plejr1', score: 667},
+                    {id: 2, nick: 'Vykolej Rozkašil', score: 512},
+                    {id: 1, nick: 'martyd420', score: 420},
+                ],
             }
         },
         
