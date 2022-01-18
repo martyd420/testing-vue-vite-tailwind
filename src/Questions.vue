@@ -67,13 +67,8 @@
             },
 
             gameOver: function() {
-                //alert('GAME OVER  -  Score: ' + this.score);
                 clearTimeout(this.timer_handle);
-                let data = {
-                    score: 1000,
-                    fails: 1,
-                }
-
+              
                 let time_min = Math.floor(this.total_time / 60);
                 if (time_min.toString().length < 2) time_min = '0' + time_min
 
