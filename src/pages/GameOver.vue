@@ -22,7 +22,7 @@
         <table class="ml-auto mr-auto mt-5 text-sm font-semibold text-gray-700">
 
             <tr v-for="(item, index) in score_table" :key="item.id">
-
+                
                 <td class="pr-3">
                     {{ ++index }}.
                 </td>
@@ -38,6 +38,13 @@
             </tr>
 
         </table>
+
+
+        <div class="text-center mt-5 text-sm font-semibold text-gray-700">
+            <input class="rounded-sm outline-none border p-0.5 border-gray-700" v-model="nick" type="text" placeholder="Zadejte svůj nick" /> 
+            <button class=" ml-2 p-0.5 border rounded-sm border-gray-700 bg-orange-100 font-semibold" v-on:click="sendScore">ODESLAT</button>
+        </div>
+ 
 
         <p class="text-center mt-10 mb-8">
             <router-link class="font-bold color-1 text-shadow-1 text-xl underline" to="/">RESTART GAME</router-link>
@@ -70,13 +77,11 @@
 
     </section>
 
-
 </template>
 
 
 <script>
     import HeaderTitle from '../components/HeaderTitle.vue';
-
 
     export default {
 
@@ -91,7 +96,7 @@
                 random: 4, // selected by random dice roll. Přísahám!!!
                 highscore: 0,
                 score_table: [],
-                
+                nick: ''
             }
         },
         
@@ -121,9 +126,31 @@
                     );
             },
 
-            sendScore: function(nick, score) {
-                return true
+            sendScore: function(nick) {
+                if (this.nick.length < 3) {
+                    alert('Zadejte prosím nick delší, než 3 znaky');
+                    return false
+                }
+                
+                let score_obj = {
+                    'score': this.score, speed: Math.floor(1+this.score / this.moves),
+                    'moves': this.moves,
+                    'nick': this.nick
+                }
+                let score_data = JSON.stringify(score_obj);
+
+                fetch('https://serazovacka.pcdr.cz/score-table/upload-score', {
+                    method: 'post',
+                    headers: {'Content-Type' : 'application/json'},
+                    body: score_data
+                }).then(r => r.json())
+                    .then(json => {
+                            //check if score ok?
+                            this.downloadScoreList()
+                        }
+                    );
             }
+
         } // end methods
 
     }
