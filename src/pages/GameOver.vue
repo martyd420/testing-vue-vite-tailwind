@@ -14,7 +14,7 @@
             Lokální highscore: {{ this.highscore }}
         </p>
 
-        <p id="new_highscore" v-if="score >= highscore && score != 0" class="animate-pulse pt-6 sm:pt-9 text-center text-2xl font-bold text-red-600">
+        <p id="new_highscore" v-if="score > highscore && score != 0" class="animate-pulse pt-6 sm:pt-9 text-center text-2xl font-bold text-red-600">
             ⭐ NOVÝ REKORD ⭐
         </p> 
 
@@ -24,7 +24,7 @@
             <tr v-for="(item, index) in score_table" :key="item.id">
 
                 <td class="pr-3">
-                    {{ index+1 }}.
+                    {{ ++index }}.
                 </td>
 
                 <td class="pr-3">
@@ -90,8 +90,6 @@
             return {
                 random: 4, // selected by random dice roll. Přísahám!!!
                 highscore: 0,
-                iterator_counter: 0,
-                // https://serazovacka.pcdr.cz/score-table/get-scores
                 score_table: [],
                 
             }
