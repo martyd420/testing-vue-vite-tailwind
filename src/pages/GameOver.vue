@@ -3,7 +3,7 @@
     <section id="universal_container">
 
 
-        <HeaderTitle title="G E J M &nbsp;&nbsp; O U V R" />
+        <HeaderTitle title="G A M E &nbsp;&nbsp; O V E R" />
 
 
         <p id="total_score" class="pt-4 sm:pt-6 text-center text-4xl font-bold outline_score text-green-700">
