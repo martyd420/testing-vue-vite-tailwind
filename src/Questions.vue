@@ -92,7 +92,7 @@
 
         watch: {
             count_solved() {
-                this.score += (this.count_solved * this.timeout) * (1 + (this.fails/3))
+                this.score += Math.floor((this.count_solved/4) * this.timeout) * (1 + (this.fails/3))
                 this.timeout += this.add_timeout_on_question_solved
                 this.nextQuestion()
             }
