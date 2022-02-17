@@ -40,11 +40,14 @@
         </table>
 
 
-        <div class="text-center mt-5 text-sm font-semibold text-gray-700">
+        <div v-if="show_form" id="score-form" class="text-center mt-5 text-sm font-semibold text-gray-700">
             <input class="rounded-sm outline-none border p-0.5 border-gray-700" v-model="nick" type="text" placeholder="Zadejte svůj nick" /> 
-            <button class=" ml-2 p-0.5 border rounded-sm border-gray-700 bg-orange-100 font-semibold" v-on:click="sendScore">ODESLAT</button>
+            <button class="ml-2 p-0.5 border rounded-sm border-gray-700 bg-orange-100 font-semibold" v-on:click="sendScore">ODESLAT</button>
         </div>
- 
+
+        <div v-if="show_message" id="score-message" class="text-center mt-5 text-xl font-bold text-gray-700">
+            {{ this.message }}
+        </div>
 
         <p class="text-center mt-10 mb-8">
             <router-link class="font-bold color-1 text-shadow-1 text-xl underline" to="/">RESTART GAME</router-link>
@@ -93,6 +96,9 @@
 
         data() {
             return {
+                show_form: true,
+                show_message: false,
+                message: '',
                 random: 4, // selected by random dice roll. Přísahám!!!
                 highscore: 0,
                 score_table: [],
@@ -145,8 +151,12 @@
                     body: score_data
                 }).then(r => r.json())
                     .then(json => {
-                            //check if score ok?
-                            this.downloadScoreList() // and refresh scores from server
+                        //check if score ok?
+                        this.message = json.message
+                        this.show_form = false
+                        this.show_message = true
+
+                        this.downloadScoreList() // and refresh scores from server
                         }
                     );
             }
