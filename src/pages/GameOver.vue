@@ -18,27 +18,37 @@
             ⭐ NOVÝ REKORD ⭐
         </p> 
 
+        <div class="text-center">
+            <table class="
+                overflow-y-scroll
+                h-72
+                inline-block
+                ml-auto
+                mr-auto
+                mt-5
+                text-sm
+                font-semibold
+                text-gray-700
+            ">
 
-        <table class="ml-auto mr-auto mt-5 text-sm font-semibold text-gray-700">
+                <tr v-for="(item, index) in score_table" :key="item.id">
 
-            <tr v-for="(item, index) in score_table" :key="item.id">
-                
-                <td class="pr-3">
-                    {{ ++index }}.
-                </td>
+                    <td class="pr-3">
+                        {{ ++index }}.
+                    </td>
 
-                <td class="pr-3">
-                    {{ item.nick }}
-                </td>
+                    <td class="pr-3">
+                        {{ item.nick }}
+                    </td>
 
-                <td class="font-bold">
-                    {{ item.score }}
-                </td>
+                    <td class="font-bold">
+                        {{ item.score }}
+                    </td>
 
-            </tr>
+                </tr>
 
-        </table>
-
+            </table>
+        </div>
 
         <div v-if="show_form" id="score-form" class="text-center mt-5 text-sm font-semibold text-gray-700">
             <input class="rounded-sm outline-none border p-0.5 border-gray-700" v-model="nick" type="text" placeholder="Zadejte svůj nick" /> 
