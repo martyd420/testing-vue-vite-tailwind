@@ -133,9 +133,9 @@
                 }
                 
                 let score_obj = {
-                    'score': this.score, speed: Math.floor(1+this.score / this.moves),
-                    'moves': this.moves,
-                    'nick': this.nick
+                    score: this.score, speed: Math.floor(1+this.score / this.moves),
+                    moves: this.moves,
+                    nick: this.nick
                 }
                 let score_data = JSON.stringify(score_obj);
 
@@ -146,7 +146,7 @@
                 }).then(r => r.json())
                     .then(json => {
                             //check if score ok?
-                            this.downloadScoreList()
+                            this.downloadScoreList() // and refresh scores from server
                         }
                     );
             }
