@@ -2,7 +2,7 @@
 
     <section id="universal_container">
 
-        <HeaderTitle title="SEŘAZOVAČKA [dev-test]" />
+        <HeaderTitle title="SEŘAZOVAČKA" />
 
         <img class="w-40 sm:w-44 md:w-52 float-left pr-2" src="./assets/screenshot.png">
 
