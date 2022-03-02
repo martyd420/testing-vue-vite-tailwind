@@ -1,8 +1,7 @@
 <script>
 
-    import Questions from './Questions.vue';
-    import StartScreen from './StartScreen.vue';
-
+    import Questions from './pages/Questions.vue';
+    import StartScreen from './pages/StartScreen.vue';
 
     export default {
 
@@ -10,7 +9,7 @@
             Questions,
             StartScreen
         },
-      
+
     }
 
 </script>

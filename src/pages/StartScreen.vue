@@ -4,7 +4,7 @@
 
         <HeaderTitle title="SEŘAZOVAČKA" />
 
-        <img class="w-40 sm:w-44 md:w-52 float-left pr-2" src="./assets/screenshot.png">
+        <img class="w-40 sm:w-44 md:w-52 float-left pr-2" src="../assets/screenshot.png" alt="Game screenshot">
 
         <p class="font-semibold text-sm sm:text-lg md:text-xl text-center">
             Principem hry je seřazení nabízených odpovědí do správného pořadí dle otázky/nápovědy v titulku. 
@@ -58,8 +58,7 @@
 
 
 <script>
-    import HeaderTitle from './components/HeaderTitle.vue';
-
+    import HeaderTitle from '../components/HeaderTitle.vue';
 
     export default {
 

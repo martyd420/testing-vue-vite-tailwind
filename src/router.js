@@ -1,6 +1,8 @@
+// noinspection JSCheckFunctionSignatures
+
 import { createRouter, createWebHistory } from 'vue-router'
-import StartScreen from './StartScreen.vue'
-import Questions from './Questions.vue'
+import StartScreen from './pages/StartScreen.vue'
+import Questions from './pages/Questions.vue'
 import GameOver from './pages/GameOver.vue'
 
 export default createRouter({

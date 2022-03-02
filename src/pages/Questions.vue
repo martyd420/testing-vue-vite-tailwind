@@ -1,11 +1,11 @@
 <script>
 
-    import Item from './components/Item.vue';
-    import Question from './components/Question.vue';
+    import Item from '../components/Item.vue';
+    import Question from '../components/Question.vue';
     
     import draggable from "vuedraggable";
 
-    import questions_data from './questions.json'
+    import questions_data from '../questions.json'
     
 
     export default {
@@ -29,27 +29,27 @@
                 timer_handle: null,
                 questions: questions_data,
                 current_question_id: 1, // question 1 = hint
-                current_question: 'Vítejte v pseudohře  > SeřaďTo <',
+                current_question: 'Seřaďte položky',
                 current_answers: [
-                    /** ty description by tam vůbec nemusely být...  ale už tam jsou :D  */
-                        { id: "1", title: "První", description: "Přesuňte na 1. místo" },
-                        { id: "2", title: "Druhá", description: "Přesuňte na 2. místo" },
-                        { id: "3", title: "Třetí", description: "Přesuňte na 3. místo" },
-                        { id: "4", title: "Čtrvrtá", description: "Přesuňte na 4. místo" },
+                    // ty description by tam vůbec nemusely být...  ale už tam jsou :D
+                    { id: "1", title: "První", description: "Přesuňte na 1. místo" },
+                    { id: "2", title: "Druhá", description: "Přesuňte na 2. místo" },
+                    { id: "3", title: "Třetí", description: "Přesuňte na 3. místo" },
+                    { id: "4", title: "Čtrvrtá", description: "Přesuňte na 4. místo" },
                 ],
             }
         },
 
         created: function () {
             this.timer_handle = setInterval(() => {
-                if(this.timeout == 0) {
-                    if (++this.fails == this.max_fails) this.gameOver()
+                if(this.timeout === 0) {
+                    if (++this.fails === this.max_fails) this.gameOver()
                     this.timeout += Math.floor(this.add_timeout_on_question_solved / 2)
                     this.nextQuestion()
                 } else {
                     --this.timeout;
                     ++this.total_time;
-                };
+                }
             }, 1000);
 
             this.timeout += this.add_timeout_first_question
@@ -58,8 +58,8 @@
         
         methods: {
             nextQuestion: function() {
-                var rndi = Math.floor(Math.random() * this.questions.length);
-                var nq = this.questions.at(rndi);
+                let rndi = Math.floor(Math.random() * this.questions.length);
+                let nq = this.questions.at(rndi);
 
                 this.current_question_id    = nq.current_question_id
                 this.current_question       = nq.current_question

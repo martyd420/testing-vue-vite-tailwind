@@ -1,34 +1,14 @@
-<template>
-
-    <section id="qlist">
-        
-        <HeaderTitle :title="this.question" />
-
-        <draggable :onEnd="onDrop" v-model="rlist" group="qlist" item-key="id">
-
-            <template #item="{ element }">
-                <Item :title="element.title" :description="element.description" /> 
-            </template>  
-            
-        </draggable>
-
-    </section>
-
-</template>
-
-
 <script>
     import HeaderTitle from './HeaderTitle.vue';
     import draggable from "vuedraggable";
     import Item from './Item.vue';
-
 
     export default {
 
         components: {
             HeaderTitle,
             Item,
-            draggable, 
+            draggable,
         },
 
         emits: ['next-move', 'solved'],
@@ -54,7 +34,7 @@
 
         methods: {
 
-            onDrop: function(e) {
+            onDrop: function() {
                 this.$emit('next-move')
                 let poradi = '';
                 this.rlist.forEach(element => {
@@ -65,10 +45,11 @@
                 }
             },
 
+            // Randomize answers
             // https://bost.ocks.org/mike/shuffle/
             randomizeArray: function(array) {
                 let currentIndex = array.length,  randomIndex;
-                while (currentIndex != 0) {
+                while (currentIndex !== 0) {
                     randomIndex = Math.floor(Math.random() * currentIndex);
                     currentIndex--;
                     [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
@@ -82,3 +63,22 @@
    
 
 </script>
+
+
+<template>
+
+    <section id="qlist">
+
+        <HeaderTitle :title="this.question" />
+
+        <draggable :onEnd="onDrop" v-model="rlist" group="qlist" item-key="id">
+
+            <template #item="{ element }">
+                <Item :title="element.title" :description="element.description" />
+            </template>
+
+        </draggable>
+
+    </section>
+
+</template>
