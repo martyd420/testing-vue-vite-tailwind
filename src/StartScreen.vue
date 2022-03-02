@@ -1,6 +1,6 @@
 <template>
 
-    <section id="universal_container">
+    <section id="universal_container" class="bounceIn">
 
         <HeaderTitle title="SEŘAZOVAČKA" />
 

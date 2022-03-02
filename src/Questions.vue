@@ -64,6 +64,11 @@
                 this.current_question_id    = nq.current_question_id
                 this.current_question       = nq.current_question
                 this.current_answers        = nq.current_answers
+
+                // show qestions after bounceout animation (after next question is ready)
+                let el = document.getElementById('qcontainer')
+
+                el.classList.remove('hidden')
             },
 
             gameOver: function() {
@@ -90,11 +95,26 @@
 
         },
 
+
+
         watch: {
+            // if count_solved is changed - calc score, and load next question
             count_solved() {
+                let el = document.getElementById('qcontainer')
+                el.classList.add('bounceOut')
+
                 this.score += Math.floor((this.count_solved/4) * this.timeout) * (1 + (this.fails/3))
                 this.timeout += this.add_timeout_on_question_solved
-                this.nextQuestion()
+
+                // wait for bounceOut animation end and then hide question
+                // container before next question is ready
+                setTimeout(() => {
+                    el.classList.remove('bounceOut')
+                    el.classList.add('hidden')
+                    this.nextQuestion()
+                }, 1385)
+
+
             }
         },   
         
@@ -110,8 +130,9 @@
 
         <span @click="gameOver" style="position: absolute; margin-top: -6px; cursor: pointer;">🢀</span>
 
-        <Question @next-move="++count" @solved="++count_solved" :id="current_question_id" :question="current_question" :answers="current_answers"/>
-
+        <div id="qcontainer">
+            <Question @next-move="++count" @solved="++count_solved" :id="current_question_id" :question="current_question" :answers="current_answers"/>
+        </div>
 
         <section id="score" class="text-right font-bold pb-2">
             
