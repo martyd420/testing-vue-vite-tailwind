@@ -48,8 +48,8 @@
             },
 
             sendScore: function() {
-                if (this.nick.length < 3) {
-                    alert('Zadejte prosím nick delší, než 3 znaky');
+                if (this.nick.length < 1) {
+                    alert('Zadejte prosím nick.');
                     return false
                 }
                 
